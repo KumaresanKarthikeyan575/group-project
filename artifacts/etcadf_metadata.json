@@ -1,0 +1,154 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "a",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "en",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "member",
+						"type": "string"
+					}
+				],
+				"name": "addmembers",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "nameToid",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "retrive",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "store",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "team",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"etcadf.sol": "etcadf"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"adf.sol": {
+			"keccak256": "0x250bf5f59528c5c95aaa566ffdeb61fdb5c615e287067dc626ad2ebf8bca21f5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://35bdce4a61d495b125e955ca81a4e8088f1031d2836051b75cad8d36f6cff47a",
+				"dweb:/ipfs/QmcTKZQKmRvrZSthg2oH2j8ePPPD9ttsun5DimPvyY3QmX"
+			]
+		},
+		"etcadf.sol": {
+			"keccak256": "0xad4f4600471aa64bda4cadb61e9cd9649d0e302d2dca75aeee1e69acf3f73465",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4749db6540c4bb9a2db2bfc0a24d6e7e25094f70b62f344e5897b2537fea1df3",
+				"dweb:/ipfs/QmcS99QekqR6zusJ6s6zcesy3Woe9YUVertfDN5HwmPdLK"
+			]
+		}
+	},
+	"version": 1
+}

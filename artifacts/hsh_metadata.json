@@ -1,0 +1,875 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_nationalIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_insuranceIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_nameHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_dobHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_genderHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_bloodTypeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_phoneHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_addressHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_allergiesHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_medicalHistoryHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_medicationsHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_emergencyContactHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_organDonorStatus",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_vaccinationRecordsHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_lastcheckupTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_doctorNotesHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_wearableDeviceDataHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_fitnessLevelHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_dietPlanHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "addPatientRecord",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_pin",
+						"type": "string"
+					}
+				],
+				"name": "emergencyAccess",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "nationalIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "insuranceIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "nameHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "dobHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "genderHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "bloodTypeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "phoneHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "addressHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "allergiesHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "medicalHistoryHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "medicationsHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "emergencyContactHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "organDonorStatus",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "vaccinationRecordsHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastcheckupTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "doctorNotesHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "wearableDeviceDataHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "fitnessLevelHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "dietPlanHash",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					}
+				],
+				"name": "getNormalRecords",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "nameHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "dobHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "genderHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "phoneHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "addressHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "emergencyContactHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastcheckupTimestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_provider",
+						"type": "address"
+					}
+				],
+				"name": "grantAccess",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nextPatientId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "patientRecords",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "nationalIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "insuranceIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "nameHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "dobHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "genderHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "bloodTypeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "phoneHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "addressHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "emergencyContactHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastcheckupTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "doctorNotesHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "fitnessLevelHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "dietPlanHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "accessLevel",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_provider",
+						"type": "address"
+					}
+				],
+				"name": "revokeAccess",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_pin",
+						"type": "string"
+					}
+				],
+				"name": "setEmergencyPin",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_nationalIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_insuranceIDhash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_nameHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_dobHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_genderHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_bloodTypeHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_phoneHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_addressHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_allergiesHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_medicalHistoryHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_medicationsHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_emergencyContactHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_organDonorStatus",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_vaccinationRecordsHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_lastcheckupTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_doctorNotesHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32[]",
+						"name": "_wearableDeviceDataHash",
+						"type": "bytes32[]"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_fitnessLevelHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_dietPlanHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "updatePatientRecord",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyAllergy",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyBloodType",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyMedicalHistory",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyMedications",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifydietPlanHash",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifydoctorNotesHash",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyfitnessLevelHash",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyinsuranceIDhash",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifynationalID",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyorganDonorStatus",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifyvaccinationRecordsHash",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_patientId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_proof",
+						"type": "bytes32"
+					}
+				],
+				"name": "verifywearableDeviceDataHash",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"hsh.sol": "hsh"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": [],
+		"viaIR": true
+	},
+	"sources": {
+		"hsh.sol": {
+			"keccak256": "0x88215c537286ec3ce7cab73e26df82a7974f89584de8e1f4741a68e08c75d418",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1175f13663a74164d6898b166992e9d7631d16dcc7bb6c4e0dfad49760de7790",
+				"dweb:/ipfs/Qma3vYSHhsTcjFfmRBsKe6twEkKVvLgbuHLsFk9JRqw7bz"
+			]
+		}
+	},
+	"version": 1
+}
