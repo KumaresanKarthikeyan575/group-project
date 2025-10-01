@@ -1,6 +1,7 @@
 // This is the updated Home1.dart
 import 'package:flutter/material.dart';
 import 'blockchain_service.dart';
+import 'formula_registration_page.dart'; // <-- Import the new page
 import 'role_selection.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +19,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _showDashboard = true;
   final _blockchainService = BlockchainService.instance;
 
   Future<void> _logout() async {
@@ -73,54 +73,72 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          if (_showDashboard)
-            Positioned(
-              top: 150,
-              left: 20,
-              right: 20,
-              child: Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: const [BoxShadow(color: Color(0x22000000), blurRadius: 30, offset: Offset(0, 12))],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Dashboard',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey.shade900),
-                    ),
-                    const Divider(height: 20),
-                    // Displaying details based on user role
-                    if(widget.userRole == UserRole.researcher) ...[
-                      _buildDetailRow('Full Name:', widget.userProfile['fullName']),
-                      _buildDetailRow('Organization:', widget.userProfile['organization']),
-                      _buildDetailRow('Designation:', widget.userProfile['designation']),
-                      _buildDetailRow('Domain:', widget.userProfile['researchDomain']),
-                    ] else ...[
-                      _buildDetailRow('Business Name:', widget.userProfile['businessName']),
-                      _buildDetailRow('Business Type:', widget.userProfile['businessType']),
-                      _buildDetailRow('Verification:', widget.userProfile['isVerified'] ? 'Verified' : 'Pending',
-                          valueColor: widget.userProfile['isVerified'] ? Colors.green : Colors.orange),
-                    ],
+          Positioned(
+            top: 150,
+            left: 20,
+            right: 20,
+            child: Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: const [BoxShadow(color: Color(0x22000000), blurRadius: 30, offset: Offset(0, 12))],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Dashboard',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey.shade900),
+                  ),
+                  const Divider(height: 20),
+                  // Displaying details based on user role
+                  if(widget.userRole == UserRole.researcher) ...[
+                    _buildDetailRow('Full Name:', widget.userProfile['fullName']),
+                    _buildDetailRow('Organization:', widget.userProfile['organization']),
+                    _buildDetailRow('Designation:', widget.userProfile['designation']),
+                    _buildDetailRow('Domain:', widget.userProfile['researchDomain']),
                     const SizedBox(height: 20),
+                    // --- NEW: NFT Button for Researchers only ---
                     Center(
                       child: ElevatedButton.icon(
-                        icon: const Icon(Icons.logout),
-                        label: const Text('Logout'),
-                        onPressed: _logout,
+                        icon: const Icon(Icons.science_outlined),
+                        label: const Text('Formula NFT Registration'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const FormulaRegistrationPage()),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.redAccent,
+                          backgroundColor: Colors.teal,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                         ),
                       ),
                     ),
+                  ] else ...[
+                    _buildDetailRow('Business Name:', widget.userProfile['businessName']),
+                    _buildDetailRow('Business Type:', widget.userProfile['businessType']),
+                    _buildDetailRow('Verification:', widget.userProfile['isVerified'] ? 'Verified' : 'Pending',
+                        valueColor: widget.userProfile['isVerified'] ? Colors.green : Colors.orange),
                   ],
-                ),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: ElevatedButton.icon(
+                      icon: const Icon(Icons.logout),
+                      label: const Text('Logout'),
+                      onPressed: _logout,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+          ),
         ],
       ),
     );
@@ -149,16 +167,13 @@ class HeaderPainter extends CustomPainter {
     const double height = 220.0;
     final double width = size.width;
     final Rect rect = Rect.fromLTWH(0, 0, width, height);
-
-    // Different gradient for each role
     final Gradient gradient = LinearGradient(
       colors: isManufacturer
-          ? [const Color(0xFF6D2077), const Color(0xFF9C27B0)] // Manufacturer purple
-          : [const Color(0xFF36D1DC), const Color(0xFF5B86E5)], // Researcher blue
+          ? [const Color(0xFF6D2077), const Color(0xFF9C27B0)]
+          : [const Color(0xFF36D1DC), const Color(0xFF5B86E5)],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
     );
-
     final Paint paint = Paint()..shader = gradient.createShader(rect);
     final Path path = Path();
     path.lineTo(0, height - 30);

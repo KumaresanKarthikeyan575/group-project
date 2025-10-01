@@ -37,3 +37,4 @@ flutter:
   assets:
     - assets/abi/ResearcherAuth.json
     - assets/abi/ManufacturerAuth.json
+    - assets/abi/formulanft.json

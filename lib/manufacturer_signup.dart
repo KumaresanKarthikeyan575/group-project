@@ -1,6 +1,6 @@
-// This is the updated BusinessRegister.dart
 import 'package:flutter/material.dart';
 import 'blockchain_service.dart';
+import 'manufacturer_details_page.dart'; // Navigate to the new details page
 import 'manufacturer_login.dart';
 
 class ManufacturerSignUpPage extends StatefulWidget {
@@ -11,56 +11,39 @@ class ManufacturerSignUpPage extends StatefulWidget {
 }
 
 class _ManufacturerSignUpPageState extends State<ManufacturerSignUpPage> {
-  int _currentStep = 0;
+  final _formKey = GlobalKey<FormState>();
   final _blockchainService = BlockchainService.instance;
   bool _isLoading = false;
 
-  // Controllers for all fields
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final mobileController = TextEditingController();
   final passwordController = TextEditingController();
-  final businessNameController = TextEditingController();
-  final licenseNumberController = TextEditingController();
-  final cityController = TextEditingController();
-  final pincodeController = TextEditingController();
-  String? businessType;
-  String? state;
 
-  // This method is now called on the final submit.
-  Future<void> _submitRegistration() async {
+  Future<void> _submitAccount() async {
+    if (!_formKey.currentState!.validate()) return;
+
     setState(() => _isLoading = true);
     try {
-      // Step 1: Sign up the account
+      final username = usernameController.text;
+      // Use a unique username for each test to avoid "Username is already taken"
       await _blockchainService.manufacturerSignUp(
-        usernameController.text,
+        username,
         emailController.text,
         mobileController.text,
         passwordController.text,
       );
 
-      // Step 2: Add the business details
-      await _blockchainService.manufacturerAddDetails(
-        usernameController.text,
-        businessNameController.text,
-        businessType!,
-        licenseNumberController.text,
-        cityController.text,
-        state!,
-        pincodeController.text,
-      );
-
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Registration successful! Please login.")),
+          const SnackBar(content: Text("Account created! Please add your business details.")),
         );
-        Navigator.pushAndRemoveUntil(
+        // Navigate to the details page, passing the username to maintain context
+        Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const ManufacturerLoginPage()),
-              (route) => false,
+          MaterialPageRoute(builder: (context) => ManufacturerDetailsPage(username: username)),
         );
       }
-
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
@@ -74,97 +57,42 @@ class _ManufacturerSignUpPageState extends State<ManufacturerSignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Using the stepper UI from your BusinessRegister.dart
-    // The main change is in the `onStepContinue` logic.
     return Scaffold(
-      appBar: AppBar(title: const Text("Register Your Business")),
-      body: Stepper(
-        type: StepperType.horizontal,
-        currentStep: _currentStep,
-        onStepContinue: () {
-          if (_currentStep < 2) {
-            setState(() => _currentStep += 1);
-          } else {
-            // Final step, call the registration function
-            _submitRegistration();
-          }
-        },
-        onStepCancel: () {
-          if (_currentStep > 0) {
-            setState(() => _currentStep -= 1);
-          }
-        },
-        controlsBuilder: (context, details) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: _isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : Row(
+      appBar: AppBar(title: const Text("Register Manufacturer: Step 1")),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text("Create Your Account", style: Theme.of(context).textTheme.headlineMedium),
+                const SizedBox(height: 20),
+                TextFormField(controller: usernameController, decoration: const InputDecoration(labelText: 'Username', border: OutlineInputBorder()), validator: (v) => v!.isEmpty ? 'Required' : null),
+                const SizedBox(height: 16),
+                TextFormField(controller: emailController, decoration: const InputDecoration(labelText: 'Email', border: OutlineInputBorder()), validator: (v) => v!.isEmpty ? 'Required' : null),
+                const SizedBox(height: 16),
+                TextFormField(controller: mobileController, decoration: const InputDecoration(labelText: 'Mobile Number', border: OutlineInputBorder()), validator: (v) => v!.isEmpty ? 'Required' : null),
+                const SizedBox(height: 16),
+                TextFormField(controller: passwordController, obscureText: true, decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()), validator: (v) => v!.isEmpty ? 'Required' : null),
+                const SizedBox(height: 24),
                 ElevatedButton(
-                  onPressed: details.onStepContinue,
-                  child: Text(_currentStep == 2 ? "Submit" : "Continue"),
+                  style: ElevatedButton.styleFrom(minimumSize: const Size(double.infinity, 50)),
+                  onPressed: _isLoading ? null : _submitAccount,
+                  child: _isLoading ? const CircularProgressIndicator(color: Colors.white) : const Text('Create Account & Continue'),
                 ),
-                if (_currentStep > 0)
-                  TextButton(
-                    onPressed: details.onStepCancel,
-                    child: const Text("Back"),
-                  ),
-              ],
-            ),
-          );
-        },
-        steps: [
-          // Step 1: Account
-          Step(
-            title: const Text("Account"),
-            isActive: _currentStep >= 0,
-            content: Column(
-              children: [
-                TextFormField(controller: usernameController, decoration: const InputDecoration(labelText: 'Username')),
-                TextFormField(controller: emailController, decoration: const InputDecoration(labelText: 'Email')),
-                TextFormField(controller: mobileController, decoration: const InputDecoration(labelText: 'Mobile')),
-                TextFormField(controller: passwordController, obscureText: true, decoration: const InputDecoration(labelText: 'Password')),
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ManufacturerLoginPage()));
+                    },
+                    child: const Text("Already have an account? Login"))
               ],
             ),
           ),
-          // Step 2: Business
-          Step(
-            title: const Text("Business"),
-            isActive: _currentStep >= 1,
-            content: Column(
-              children: [
-                TextFormField(controller: businessNameController, decoration: const InputDecoration(labelText: 'Business Name')),
-                DropdownButtonFormField<String>(
-                  value: businessType,
-                  items: ["Retailer", "Distributor", "Wholesaler"].map((t) => DropdownMenuItem(value: t, child: Text(t))).toList(),
-                  onChanged: (v) => setState(() => businessType = v),
-                  decoration: const InputDecoration(labelText: 'Business Type'),
-                ),
-                TextFormField(controller: licenseNumberController, decoration: const InputDecoration(labelText: 'Drug License Number')),
-              ],
-            ),
-          ),
-          // Step 3: Address
-          Step(
-            title: const Text("Address"),
-            isActive: _currentStep >= 2,
-            content: Column(
-              children: [
-                TextFormField(controller: cityController, decoration: const InputDecoration(labelText: 'City')),
-                DropdownButtonFormField<String>(
-                  value: state,
-                  items: ["Tamil Nadu", "Karnataka", "Kerala"].map((s) => DropdownMenuItem(value: s, child: Text(s))).toList(),
-                  onChanged: (v) => setState(() => state = v),
-                  decoration: const InputDecoration(labelText: 'State'),
-                ),
-                TextFormField(controller: pincodeController, decoration: const InputDecoration(labelText: 'Pincode')),
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
 }
+
