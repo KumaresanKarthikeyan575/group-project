@@ -1,0 +1,304 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
+      }
+    ],
+    "name": "AccountVerified",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "wallet",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
+      }
+    ],
+    "name": "ManufacturerLoggedIn",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "wallet",
+        "type": "address"
+      }
+    ],
+    "name": "ManufacturerLoggedOut",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "wallet",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
+      }
+    ],
+    "name": "ManufacturerRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "wallet",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
+      }
+    ],
+    "name": "ProfileUpdated",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_businessName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_businessType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_drugLicenseNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_state",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_pincode",
+        "type": "string"
+      }
+    ],
+    "name": "addOrUpdateDetails",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
+      }
+    ],
+    "name": "getManufacturerDetails",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "walletAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "passwordHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "mobileNumber",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "businessName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "businessType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "drugLicenseNumber",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "businessAddressCity",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "businessAddressState",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "businessAddressPincode",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isRegistered",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isVerified",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "detailsFilled",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct ManufacturerAuth.Manufacturer",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_password",
+        "type": "string"
+      }
+    ],
+    "name": "login",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "logout",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_mobileNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_password",
+        "type": "string"
+      }
+    ],
+    "name": "signUp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
+      }
+    ],
+    "name": "verifyManufacturer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
+
